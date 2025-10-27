@@ -1,7 +1,7 @@
 {
   "name": "react-markdown",
   "description": "Renders Markdown as React components",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "keywords": [
     "markdown",
     "react",
@@ -68,7 +68,7 @@
     "webpack-cli": "^2.0.10"
   },
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
+    "react": "*"
   },
   "jest": {
     "verbose": true,

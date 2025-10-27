@@ -15,7 +15,19 @@ const defaultRenderers = require('./renderers')
 
 const allTypes = Object.keys(defaultRenderers)
 
-const ReactMarkdown = function ReactMarkdown(props) {
+const defaultProps = {
+  renderers: {},
+  escapeHtml: true,
+  skipHtml: false,
+  sourcePos: false,
+  rawSourcePos: false,
+  transformLinkUri: uriTransformer,
+  astPlugins: [],
+  plugins: []
+}
+
+const ReactMarkdown = function ReactMarkdown(rawProps) {
+  const props = xtend(defaultProps, rawProps);
   const src = props.source || props.children || ''
   const remarkParseOptions = props.remarkParseOptions;
 
@@ -69,18 +81,6 @@ function determineAstPlugins(props) {
   }
 
   return props.astPlugins ? plugins.concat(props.astPlugins) : plugins
-}
-
-ReactMarkdown.defaultProps = {
-  renderers: {},
-  escapeHtml: true,
-  skipHtml: false,
-  sourcePos: false,
-  rawSourcePos: false,
-  transformLinkUri: uriTransformer,
-  astPlugins: [],
-  plugins: [],
-  remarkParseOptions: {},
 }
 
 ReactMarkdown.propTypes = {
